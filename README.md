@@ -1,19 +1,72 @@
-This project is a language detection model built using Python and the scikit-learn library. Here's a breakdown of the different components:
+# Language Detection using Naive Bayes Classifier
 
-Data Loading: The project starts by loading a CSV file named "Language Detection.csv" into a Pandas DataFrame df. The dataset contains text data and their corresponding language labels.
+This repository contains Python code for detecting the language of a given text using a Multinomial Naive Bayes classifier. The classifier is trained on a dataset containing text samples in multiple languages.
 
-Data Preprocessing: The dataset is split into features (text data) X and labels (language) y. The data is then further split into training and test sets using the train_test_split function from scikit-learn.
+## Dataset
 
-Feature Extraction: A CountVectorizer is used to convert the text data into numerical features. The fit_transform method is applied to the training data, and the transform method is used to transform the test data.
+The dataset used for training the classifier is provided in the file `Language Detection.csv`. It contains two columns:
 
-Model Training: A Multinomial Naive Bayes classifier (MultinomialNB) from scikit-learn is used to train the language detection model. The fit method is called to train the model on the vectorized training data.
+- `Text`: Text samples in various languages.
+- `Language`: Corresponding language labels for each text sample.
 
-Model Evaluation: The trained model is evaluated on the test set using the predict method. The accuracy score is calculated using the accuracy_score function from scikit-learn and printed.
+## Dependencies
 
-Prediction Function: A function predict_language is defined to take in a text input and predict the language using the trained model. This function uses the transform method of the CountVectorizer to convert the input text into numerical features and then uses the predict method of the Multinomial Naive Bayes classifier to predict the language.
+- pandas
+- scikit-learn
 
-Sample Predictions: The predict_language function is used to predict the language of some sample text inputs, and the results are printed.
+You can install the dependencies using pip:
 
-The goal of this project is to develop a language detection model that can accurately predict the language of given text inputs. The Multinomial Naive Bayes classifier was chosen as the model because it is well-suited for text classification tasks. The CountVectorizer is used to convert the text data into numerical features that can be processed by the machine learning model.
+```
+pip install pandas scikit-learn
+```
 
-The project demonstrates the end-to-end process of building a language detection model, including data loading, preprocessing, feature extraction, model training, and model evaluation. The sample predictions show how the trained model can be used to detect the language of new text inputs.
+## Usage
+
+1. Clone the repository:
+
+```
+git clone https://github.com/your_username/language-detection.git
+```
+
+2. Navigate to the repository directory:
+
+```
+cd language-detection
+```
+
+3. Run the Python script:
+
+```
+python language_detection.py
+```
+
+## Description
+
+- The script loads the dataset using pandas.
+- It splits the dataset into features (`X`) and labels (`y`).
+- Splits the dataset into training and test sets using `train_test_split` from scikit-learn.
+- Converts the text data into numerical features using `CountVectorizer`.
+- Trains a Multinomial Naive Bayes classifier using the training data.
+- Evaluates the classifier's accuracy on the test set.
+- Defines a function `predict_language` to predict the language of a given text.
+- Tests the model with some sample texts.
+
+## Example
+
+```python
+sample_texts = [
+    "Hola, ¿cómo estás?",
+    "Bonjour, comment allez-vous?",
+    "Привет, как дела?",
+    "Hello, how are you?",
+    "مرحبا انا استخدم اللغه العربيه"
+]
+
+for text in sample_texts:
+    predicted_language = predict_language(text)
+    print(f"The language of '{text}' is predicted to be: {predicted_language}")
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
